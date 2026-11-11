@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:6.0.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    //lombok: dependencia para compilacion
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    //opcional: lombok para pruebas unitarias
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    // JUnit para pruebas (opcional)
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // JPA API
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+
+    // Implementación de JPA (Hibernate)
+    implementation 'org.hibernate.orm:hibernate-core:6.4.4.Final'
+
+    // Base de datos en memoria H2
+    implementation 'com.h2database:h2:2.2.224'
+}
+
+test {
+    useJUnitPlatform()
+}
